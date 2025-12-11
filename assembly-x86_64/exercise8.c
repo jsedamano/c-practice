@@ -7,4 +7,4 @@ int arith(int x, int y, int z) {
     return t4;
 }
 
-// gcc -S -fno-asynchronous-unwind-tables -mno-red-zone -o0 exercise8.c
+// gcc -S -fno-asynchronous-unwind-tables -mno-red-zone -O0 exercise8.c
