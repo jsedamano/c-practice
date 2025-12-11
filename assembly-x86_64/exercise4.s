@@ -1,4 +1,4 @@
-	.file	"part4.c"
+	.file	"exercise4.c"
 	.text
 	.globl	function
 	.type	function, @function

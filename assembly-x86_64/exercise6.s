@@ -1,4 +1,4 @@
-	.file	"part-4.c"
+	.file	"exercise6.c"
 	.text
 	.globl	curious
 	.type	curious, @function
