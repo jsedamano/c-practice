@@ -1,0 +1,25 @@
+For exercise8:
+    - movzwl %ax, %eax:
+        - movzwl = MOV + Zero Word -> Long
+        - It moves a 16-bit value into a 32-bit register and zero-extend it.
+        - Zero-extend: copy the 16-bit value, fill the upper 16 bits with zeros, not sign bits.
+    - Remember that:
+        - (%rax = the full 64-bit register)
+        - %eax = 32-bit register
+        - %ax = lower 16-bits of %eax
+        - %al = lower 8-bits of %ax
+    - Assume %eax currently holds 0xDEADBEEF
+    - Then, %ax = the lower 16 bits (0xBEEF)
+    - Now apply: movzwl %ax, %eax
+    - This produces: %eax = 0x0000BEEF
+        - The old upper 16 bits (0xDEAD) are discarded
+        - %ax is kept
+        - Zero fills the top half
+    - In the C code: int t3 = t1 & 0xFFFF;
+    - This masks off everything except the lowest 16 bits.
+    - The assembly equivalent is: movzwl %ax, %eax (same as: eax = eax & 0x0000FFFF)
+        - It implements the bitmasking operation t1 & 0xFFFF.
+    - The compiler doesn't just use AND because movzwl is:
+        - Shorter
+        - Potentially faster
+        - Naturally expresses "take the low 16 bits and zero the rest"
