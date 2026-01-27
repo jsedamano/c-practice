@@ -1,0 +1,11 @@
+.text                       # Directive ".text": put the following into program memory
+                            # Register use: x6: variable "i"; x7: variable "k";
+main:                       # label "main" = address for "j" to jump to
+    addi x6, x0, 10         # x6 = 0 + 10 = 10
+    addi x7, x0, 64         # x7 = 0 + 64 = 64
+    add  x28, x6, x7        # x28 = 10 + 64 = 74
+    add  x28, x28, x28      # x28 = 74 + 74 = 148
+    add  x28, x28, x7       # x28 = 148 + 64 = 212
+    addi x7, x7, -1         # x7 = 64 - 1 = 63
+    sub  x7, x7, x6         # x7 = 63 - 10 = 53 (end of loop)
+    j    main               # jump back to main (infinite loop)
